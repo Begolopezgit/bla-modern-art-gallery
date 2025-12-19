@@ -1,0 +1,147 @@
+@use "../abstracts/variables" as va;
+@use "../abstracts/mixins" as mx;
+
+.map {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 600px;
+  overflow: hidden;
+
+  &__location {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+
+    &-fondo {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% center;
+    }
+    &-point {
+      position: absolute;
+      z-index: 20;
+      width: 60px;
+      top: 59%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+    }
+    &-enlace {
+      position: absolute; /* Lo sacamos del flujo normal */
+      top: 0;
+      left: 100;
+      z-index: 30; /* Encima de todo */
+      & a {
+        position: relative;
+        z-index: 10;
+        display: flex;
+
+        p {
+          position: relative;
+          z-index: 10;
+          background-color: va.$black;
+          color: va.$white;
+          width: 200px;
+          padding: 20px;
+          text-align: center;
+          font-family: va.$font-titles;
+          font-size: 19px;
+          letter-spacing: 3.64px;
+          font-weight: 700;
+        }
+        & img {
+          position: relative;
+          z-index: 10;
+          width: 30px;
+          height: 30px;
+          background-color: va.$brown;
+          rotate: 180deg;
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
+.map__text {
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 32px;
+  background-color: va.$black;
+  color: va.$white;
+  padding: 60px 40px;
+  &-title {
+    font-family: va.$font-titles;
+    font-size: 55px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 60px;
+    @include mx.breakpoint(tablet) {
+      line-height: 50px;
+      padding-right: 15%;
+    }
+  }
+  &-street {
+    font-family: va.$font-titles;
+    font-size: 35px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: va.$brown;
+  }
+  &-description {
+    margin-top: 30px;
+    width: 95%;
+    text-align: justify;
+  }
+  @include mx.breakpoint(tablet) {
+    display: flex;
+  }
+}
+
+footer {
+  .footer__location {
+    width: 100%;
+    margin: 0 auto;
+    background-color: va.$brown;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @include mx.breakpoint(tablet) {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      gap: 60px;
+    }
+    &-imglogo {
+      padding-left: 40px;
+    }
+    & p {
+      width: 82%;
+      color: va.$black;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      padding-left: 40px;
+      @include mx.breakpoint(tablet) {
+        margin: 0;
+
+        width: 500px;
+      }
+    }
+    & img {
+      filter: brightness(0);
+      padding-right: 10px;
+    }
+    &-rrss {
+      padding-left: 40px;
+      @include mx.breakpoint(tablet) {
+        display: flex;
+        justify-content: end;
+        padding-right: 80px;
+        width: 300px;
+      }
+    }
+  }
+}

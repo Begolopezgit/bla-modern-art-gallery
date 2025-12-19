@@ -1,0 +1,280 @@
+@use "../abstracts/mixins" as mx;
+@use "../abstracts/variables" as va;
+
+.main__principal {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "imagen" "titulo" "texto";
+  &-blackbox {
+    display: none;
+  }
+  &-image {
+    grid-area: imagen;
+    width: 100%;
+    img {
+      width: 100%;
+      display: block;
+      margin-top: -100px;
+      position: relative;
+      z-index: 0;
+    }
+  }
+  &-text {
+    position: relative;
+    grid-area: texto;
+    padding: 10px;
+    background: va.$white;
+    margin-top: -50px;
+    p {
+      font-weight: 200;
+      font-size: 19px;
+      font-weight: 300;
+      line-height: 30px;
+      width: 94%;
+      padding: 40px 10px;
+    }
+
+    &-enlace {
+      a {
+        display: flex;
+        padding-left: 10px;
+        position: relative;
+        z-index: 99;
+        p {
+          background-color: va.$black;
+          color: va.$white;
+          width: 50%;
+          padding: 20px;
+          text-align: center;
+          font-family: va.$font-titles;
+          letter-spacing: 3.64px;
+          font-weight: 700;
+        }
+        & img {
+          width: 30px;
+          height: 30px;
+          background-color: va.$brown;
+          padding: 20px;
+        }
+      }
+    }
+  }
+
+  &-title {
+    grid-area: titulo;
+    color: va.$black;
+    font-family: va.$font-titles;
+    font-size: 60px;
+    line-height: 52px;
+    font-weight: 800;
+    padding-left: 20px;
+    padding-top: 30px;
+    position: relative;
+    margin-top: -200px;
+    background-color: va.$white;
+  }
+
+  @include mx.breakpoint(tablet) {
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-areas: "imagen texto";
+    &-blackbox {
+      display: none;
+    }
+    &-image {
+      grid-area: imagen;
+      img {
+        top: 0px;
+        object-fit: cover;
+      }
+    }
+    &-text {
+      top: 40%;
+      right: 15%;
+      background: transparent;
+    }
+    &-title {
+      grid-area: texto;
+      top: 45%;
+      right: 15%;
+      width: 400px;
+      background: transparent;
+    }
+  }
+  @include mx.breakpoint(desktop) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "negro imagen texto";
+    &-blackbox {
+      grid-area: negro;
+      background-color: va.$black;
+      display: block;
+      width: 100%;
+    }
+    &-title {
+      grid-area: negro;
+      color: va.$white;
+      mix-blend-mode: difference;
+      left: 35%;
+      top: 45%;
+      font-size: 90px;
+      line-height: 80px;
+      width: 90%;
+    }
+    &-text {
+      grid-area: texto;
+      top: 24%;
+      max-width: 360px;
+      &-enlace {
+        margin-top: 50px;
+      }
+    }
+  }
+}
+
+.main__content {
+  z-index: 18;
+  margin: 0 auto;
+  &-day {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "imagen"
+      "texto";
+    margin-top: 80px;
+    @include mx.breakpoint(tablet) {
+      display: grid;
+      grid-template-columns: 1fr 1.7fr;
+      grid-template-areas: " texto-t imagen-t";
+      margin: 0 auto;
+      margin-top: 50px;
+      margin-left: 20px;
+    }
+    &-text {
+      grid-area: texto;
+      padding-top: 50px;
+      margin-left: 5%;
+      max-width: 91%;
+      &-title p {
+        font-family: va.$font-titles;
+        font-size: 60px;
+        line-height: 52px;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+      &-description {
+        font-weight: 300;
+        font-size: 19px;
+        line-height: 30px;
+        width: 95%;
+        padding: 40px 0px;
+        @include mx.breakpoint(tablet) {
+          margin-top: -15px;
+        }
+        @include mx.breakpoint(desktop) {
+          width: 70%;
+        }
+      }
+      @include mx.breakpoint(tablet) {
+        grid-area: texto-t;
+        margin: 0 auto;
+        padding-left: 20px;
+        margin-top: 8px;
+      }
+    }
+    & img {
+      grid-area: imagen;
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+      @include mx.breakpoint(tablet) {
+        grid-area: imagen-t;
+        margin: 0 auto;
+        width: 85%;
+        padding: 20px;
+      }
+    }
+  }
+  &-come {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "imagen"
+      "imgen"
+      "titulo"
+      "texto";
+    margin-top: 20px;
+    img {
+      grid-area: imagen;
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+      padding-bottom: 25px;
+      @include mx.breakpoint(tablet) {
+        flex: 4;
+        padding-bottom: 0;
+        padding-left: 20px;
+        padding-top: 20px;
+      }
+    }
+    &-text {
+      color: va.$white;
+      img {
+        grid-area: imagen;
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+        @include mx.breakpoint(tablet) {
+          padding: 20px;
+        }
+      }
+      &-tituloydescrip {
+        background-color: va.$black;
+        margin: 0 auto;
+        width: 90%;
+        padding-top: 50px;
+
+        &-title p {
+          grid-area: titulo;
+          font-family: va.$font-titles;
+          font-size: 55px;
+          line-height: 55px;
+          font-weight: 800;
+          letter-spacing: -1px;
+          padding-left: 20px;
+          @include mx.breakpoint(tablet) {
+            padding-left: 30px;
+          }
+        }
+        &-description {
+          grid-area: texto;
+          font-weight: 300;
+          font-size: 19px;
+          line-height: 30px;
+          width: 90%;
+          padding: 40px 20px 40px 20px;
+          @include mx.breakpoint(tablet) {
+            width: 75%;
+            padding-left: 30px;
+          }
+        }
+        @include mx.breakpoint(tablet) {
+          padding-top: 100px;
+          padding-bottom: 100px;
+        }
+      }
+      @include mx.breakpoint(tablet) {
+        flex: 3;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+    @include mx.breakpoint(tablet) {
+      display: flex;
+      margin: 0 auto;
+    }
+  }
+  @include mx.breakpoint(desktop) {
+    width: 80%;
+  }
+}
